@@ -73,6 +73,10 @@ const videoMessage = {
   videoUrl: "video.mp4",
 }; // Missing duration
 
+createNotification(textMessage); // No error
+createNotification(imageMessage); // Runtime error: Missing width/height
+createNotification(videoMessage); // Runtime error: Missing duration
+
 //! SOLUTION: Property-based type guards
 
 // Define specific message types without a type discriminator
@@ -83,7 +87,7 @@ export interface BaseMessage {
 }
 
 interface TextMessage extends BaseMessage {
-  text: string;
+  textContent: string;
 }
 
 interface ImageMessage extends BaseMessage {
@@ -102,7 +106,7 @@ type Message = TextMessage | ImageMessage | VideoMessage;
 
 // Property-based type guards
 function isTextMessage(message: Message): message is TextMessage {
-  return "text" in message;
+  return "textContent" in message;
 }
 
 function isImageMessage(message: Message): message is ImageMessage {
@@ -128,7 +132,7 @@ function isVideoMessage(message: Message): message is VideoMessage {
 // Improved notification function with proper type checking
 function createSafeNotification(message: Message): string {
   if (isTextMessage(message)) {
-    return `${message.sender} texted "${message.text}"`;
+    return `${message.sender} texted "${message.textContent}"`;
   } else if (isImageMessage(message)) {
     // Safe! TypeScript knows width/height exist
     return `${message.sender} sent an image (${message.width}x${message.height})`;
@@ -143,37 +147,50 @@ function createSafeNotification(message: Message): string {
   throw new Error("Unknown message type");
 }
 
+createSafeNotification(textMessage); // No error
+// createSafeNotification(imageMessage); // TypeScript error: Missing width/height
+// createSafeNotification(videoMessage); // TypeScript error: Missing duration
+
 //! Better solution: Discriminated unions and type guards
 
 interface BetterBaseMessage {
   type: string;
 }
 
-interface TextMessage extends BetterBaseMessage {
+interface BetterTextMessage extends BetterBaseMessage {
   type: "text";
-  text: string;
+  textContent: string;
 }
 
-interface ImageMessage extends BetterBaseMessage {
+interface BetterImageMessage extends BetterBaseMessage {
   type: "image";
   imageUrl: string;
 }
 
-interface VideoMessage extends BetterBaseMessage {
+interface BetterVideoMessage extends BetterBaseMessage {
   type: "video";
   videoUrl: string;
 }
 
-type BetterMessage = TextMessage | ImageMessage | VideoMessage;
+type BetterMessage =
+  | BetterTextMessage
+  | BetterImageMessage
+  | BetterVideoMessage;
 
-function betterIsTextMessage(message: BetterMessage): message is TextMessage {
+function isBetterTextMessage(
+  message: BetterMessage
+): message is BetterTextMessage {
   return message.type === "text";
 }
 
-function betterIsImageMessage(message: BetterMessage): message is ImageMessage {
+function isBetterImageMessage(
+  message: BetterMessage
+): message is BetterImageMessage {
   return message.type === "image";
 }
 
-function betterIsVideoMessage(message: BetterMessage): message is VideoMessage {
+function isBetterVideoMessage(
+  message: BetterMessage
+): message is BetterVideoMessage {
   return message.type === "video";
 }
