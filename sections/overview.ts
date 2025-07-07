@@ -13,7 +13,7 @@
 ?       Problem: Using "as" assertions for different message types (text, image, video) bypasses type checking
 *       Solution: Discriminated unions and type guard functions for safe type narrowing
 
-!    3. TYPING WEIRD OBJECTS
+!    3. TYPING COMPLEX OBJECTS
 ?       Problem: Complex nested objects, dynamic keys, mixed types
 *       Solution: Index signatures, mapped types, and utility types
 

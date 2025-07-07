@@ -1,4 +1,4 @@
-// TYPING WEIRD OBJECTS
+// TYPING COMPLEX OBJECTS
 // -----------------
 
 //! PROBLEM: Complex nested objects with dynamic keys
