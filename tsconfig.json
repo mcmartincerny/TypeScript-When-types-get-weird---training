@@ -8,7 +8,7 @@
       "sourceMap": true,
       "allowSyntheticDefaultImports": true,
       "moduleResolution": "node",
-      "types": ["node", "jest"],
+      "types": ["node"],
       "lib": ["ES2021", "DOM", "esnext.asynciterable"],
       "resolveJsonModule": true,
       "skipLibCheck": true,
