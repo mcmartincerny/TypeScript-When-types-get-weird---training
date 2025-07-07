@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "jsx": "react",
+      "module": "commonjs",
+      "strict": true,
+      "target": "es2021",
+      "outDir": "./dist",
+      "sourceMap": true,
+      "allowSyntheticDefaultImports": true,
+      "moduleResolution": "node",
+      "types": ["node", "jest"],
+      "lib": ["ES2021", "DOM", "esnext.asynciterable"],
+      "resolveJsonModule": true,
+      "skipLibCheck": true,
+      "allowJs": true
+    },
+    "include": ["sections/**/*" ]
+  }
+  

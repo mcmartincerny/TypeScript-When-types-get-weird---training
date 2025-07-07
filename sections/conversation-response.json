@@ -1,0 +1,59 @@
+{
+  "conversation": {
+    "id": "conv-123",
+    "title": "Team Chat",
+    "participants": [
+      {"id": "user-1", "name": "Alice", "status": "online"},
+      {"id": "user-2", "name": "Bob", "status": "offline"},
+      {"id": "user-3", "name": "Charlie", "status": "away"}
+    ]
+  },
+  "messages": [
+    {
+      "id": "msg-1",
+      "sender": "user-1",
+      "text": "Hey team, how's the project going?",
+      "timestamp": 1623422542000,
+      "reactions": {
+        "👍": 5,
+        "👌": 2,
+        "😘": 1,
+        "😭": 1
+      }
+    },
+    {
+      "id": "msg-2",
+      "sender": "user-3",
+      "text": "Making good progress!",
+      "timestamp": 1623422642000,
+      "reactions": {
+        "😀": 1,
+        "😵": 2
+      }
+    },
+    {
+      "id": "msg-3",
+      "sender": "user-2",
+      "timestamp": 1623422842000,
+      "image": {
+        "url": "https://example.com/image.jpg",
+        "width": 800,
+        "height": 600,
+        "caption": "Project screenshot"
+      }
+    },
+    {
+      "id": "msg-4",
+      "sender": "user-1",
+      "timestamp": 1623423042000,
+      "video": {
+        "url": "https://example.com/video.mp4",
+        "duration": 45,
+        "thumbnail": "https://example.com/thumbnail.jpg",
+        "title": "Demo of new features"
+      }
+    }
+  ],
+  "unreadCount": 3,
+  "lastActivity": 1623423042000
+} 
