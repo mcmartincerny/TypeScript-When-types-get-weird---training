@@ -117,7 +117,7 @@ function longRunningFunction(a: number, b: number) {
   return a + b;
 }
 
-const tracked = trackTime((a: number, b: number) => a + b);
+const tracked = trackTime(longRunningFunction);
 const result = tracked(1, 2); // Time taken: 4661ms
 console.log(result); // 3
 
